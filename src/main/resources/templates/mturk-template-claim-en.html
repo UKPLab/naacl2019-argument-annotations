@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright 2019
+  ~ Ubiquitous Knowledge Processing (UKP) Lab
+  ~ Technische Universität Darmstadt
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+<html lang="{{language}}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>What does the author think about this product?</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../css/offcanvas.css" rel="stylesheet">
+
+</head>
+
+<body role="document" id="wrapper">
+
+<input type="hidden" id="filler" name="hiddenFiller" value="<em>'highlight the text to fill the gap'</em>">
+<input type="hidden" id="because_filler" name="hiddenFiller" value="because">
+<input type="hidden" id="but_filler" name="hiddenFiller" value="but">
+
+
+<div class="container">
+
+<form name="mturk_form_name" id="mturk_form" method="post" action="{{{mturkURL}}}">
+
+
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!-- <button class="btn btn-info" id="buttonGuideline" value="click here to see the guideline">click here to see/hide the guideline</button><br> -->
+
+        <div class="bg-info" id="div_guideline">
+	  <p>Read the entire product review below and note the author's overall opinion, which is highlighted within the review text.  Then, try to identify individual claims (phrases or sentences) in the review that <em>directly</em> support or attack the author's overall opinion.</p>
+	  <p>For example, a review for a hoverboard might read, "I think this hoverboard is great, since it is fun to ride.  However, I should note that it was difficult to learn to use it," with "this hoverboard is great" as the author's overall opinion.  An example of a supporting claim might be "it is fun to ride", and an example of an attacking claim might be "it was difficult to learn to use it".</p>
+	  <p>For each supporting claim you find, press the "+because" button under the radio button marked (A), and a green text field will appear.  Then use your pointer to highlight the supporting claim in the text.  The highlighted text will be copied into the text field.</p>
+	  <p>For each attacking claim you find, press the "+but" button under the radio button marked (A), and a red text field will appear.  Then use your pointer to highlight the attacking claim in the text.  The highlighted text will be copied into the text field.</p>
+	  <p>If you make a mistake, you can replace the contents of the text field by highlighting again.  You can also remove a text field by pressing the "x" button next to it.</p>
+	  <p>If you cannot identify any supporting or attacking claims at all, then select the radio button marked (B) and type in, in your own words, a paraphrase of the author's overall opinion.</p>
+	  <p><strong>Guidelines:</strong></p>
+	    <ul>
+	      <li>The claims you highlight cannot overlap with the author's overall opinion.</li>
+	      <li>Do not simply highlight all the positive and negative things the author says about the product.  Focus only on the claims that <em>directly</em> support or attack the author's overall opinion.</li>
+	      <li>Claims often begin with words such as "because", "since", "so", "but", and "however".  However, you should omit these words when highlighting the claim.</li>
+	    </ul>
+	  <p>After entering all the claims (or your paraphrase of the overall opinion), press the Submit button.</p>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="card card-block col-xs-12 col-sm-7 class">
+
+                <div id="sandbox"  style="padding-right:20px; border-right: 1px solid #ccc;">
+                    <p><em>Product Name: {{{productName}}}</em></p>
+                    <p id="text">
+                    {{#reviewTitle}}{{{.}}}{{/reviewTitle}}<span><br><br></span>{{#rawHTMLTokens}}{{{.}}}{{/rawHTMLTokens}}
+                    </p>
+                </div>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="card card-block col-xs-12 col-sm-5 extendable">
+                <!-- <h4>The author's overall opinion is: {{majorClaim}}</h4> -->
+
+                <input type="radio" name="intext" value="true" checked> (A) {{majorClaim}}:<br>
+
+                <div contenteditable="false"  class=" answer" id="divBecause"></div>
+                <div contenteditable="false"  class=" answer" id="divBut"></div>
+                <div contenteditable="false"  class="answer" id="divButtons">
+                    <p>
+                            <button type="button" class="add_button btn btn-primary" id="add_because">+because</button>
+                            <button type="button" class="add_button btn btn-primary" id="add_but">+but</button>
+                            <br>
+
+
+                    </p>
+
+                </div>
+                <input type="radio" name="intext" value="false"> (B) I cannot identify any supporting or attacking claims in the review.  The author's overall opinion is, in my own words:<br>
+                <input type="text" placeholder="paraphrase the author's opinion" id="textbox"><br>
+
+            </div><!--/.col-xs-6.col-lg-4-->
+        </div><!--/row-->
+
+
+    </div><!--/row-->
+
+
+
+    <div><br>
+            <button class="btn btn-info pull-right" id="button_submit" value="click here to see the guideline">Submit HIT</button>
+            <input type="hidden" id="assignmentId" name="assignmentId" value="" />
+            <input id="productName1" type="hidden" name="name" value="{{productName}}">
+            <input id="stars" type="hidden" name="rating" value="{{reviewStarRating}}">
+            <input id="author" type="hidden" name="author" value="{{reviewerID}}">
+            <input id="date" type="hidden" name="date" value="{{reviewTime}}">
+            <input id="textinput" type="hidden" name="textinput" value="">
+            <input id="tokens" type="hidden" name="tokens">
+			<input id="userAgent" type="hidden" name="userAgent">
+
+</form>
+
+
+    </div>
+
+    <hr>
+
+    <footer>
+			<p>Copyright &copy; 2019 Ubiquitous Knowledge Processing Lab, Technische Universität Darmstadt</p>
+    </footer>
+
+</div><!--/.container-->
+
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../js/jquery-2.1.3.min.js"><\/script>')</script>
+<script src="../js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../js/TextHighlighter.min.js"></script>
+<script src="../js/claim.js"></script>
+</body>
+</html>

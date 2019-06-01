@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright 2019
+  ~ Ubiquitous Knowledge Processing (UKP) Lab
+  ~ Technische Universität Darmstadt
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+<html lang="{{language}}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>What does the author think about this product?</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../css/offcanvas.css" rel="stylesheet">
+
+        </head>
+
+<body role="document" id="wrapper">
+
+<input type="hidden" id="highlight" name="hiddenHighlight" value="<em>'please highlight the author's opinion'</em>">
+<input type="hidden" id="editme" name="hiddenEditMe" value="<em>'Edit me'</em>">
+
+<form name="mturk_form_name" id="mturk_form" method="post" action="{{{mturkURL}}}">
+
+<div class="container">
+
+
+    <div class="row row-offcanvas row-offcanvas-right">
+     <!--   <button class="btn btn-info" id="buttonGuideline" value="Show/hide the instructions">Show/hide the instructions</button><br> -->
+        <div class="bg-info" id="div_guideline">
+          <p>Read the entire product review below and identify in your mind the author's overall opinion of the product.</p>
+	  <p>Next, <strong>try to identify a single part of the review that best summarizes the author's overall opinion of the product.</strong> If there is such a part, then highlight it using your pointer.  The text you highlighted should appear on the right under the radio button marked (A).</p>
+	  <p>If you are sure that no one part of the review contains the overall opinion, then select the radio button marked (B) and type in, in your own words, what you think the author's overall opinion is.</p>
+	  <p>Guidelines:</p>
+	    <ul>
+	      <li>The overall opinion is usually a short, clear statement about the product as a whole, such as "I am completely satisfied with this product" or "this product is disappointing and not worth the money".</li>
+	      <li>The overall opinion should not refer only to specific parts or functions of the product, such as a phone's camera or a particular function of a multi-cooker.</li>
+	      <li>Try to find a phrase or sentence that answers the question, "How good is this product?"</li>
+	    </ul>
+	  <p>After selecting or entering the overall opinion, press the Submit button.</p>
+        </div>
+
+
+        <hr>
+
+            <div class="row">
+                    <div id="sandbox" class="col-xs-12 col-sm-7 class " style="padding-right:20px; border-right: 1px solid #ccc;">
+                        <p><em>Product Name: {{{productName}}}</em></p>
+                        <p id="text">
+                        {{#reviewTitle}}{{{.}}}{{/reviewTitle}}<span><br><br></span>{{#rawHTMLTokens}}{{{.}}}{{/rawHTMLTokens}}
+                        </p>
+                    </div>
+                <div class="col-xs-12 col-sm-5 extendable">
+                    <h4>The author's overall opinion is:</h4>
+                    <div class="col-xx-xx answer" id="divClaim">
+						<input type="radio" name="intext" value="true" checked> (A) The author's overall opinion is in the text:<br>
+						<p class="claim answers inputbox" id="infocus"><em>highlight the author's overall opinion</em></p><br>
+						<input type="radio" name="intext" value="false"> (B) The author's overall opinion is not in the text:<br>
+						<input type="text" placeholder="formulate the author's overall opinion in your own words" id="textbox"><br>
+                   </div>
+                    <!--<span id='text_clear_button0' class="clear_button btn btn-warning">clear</span>-->
+
+
+                </div><!--/.col-xs-6.col-lg-4-->
+
+            </div><!--/row-->
+
+
+    </div><!--/row-->
+        <input type="hidden" id="assignmentId" name="assignmentId" value="" />
+        <input id="productName1" type="hidden" name="name" value="{{productName}}">
+        <input id="stars" type="hidden" name="rating" value="{{reviewStarRating}}">
+        <input id="author" type="hidden" name="author" value="{{reviewerID}}">
+        <input id="date" type="hidden" name="date" value="{{reviewTime}}">
+        <input id="textinput" type="hidden" name="textinput" value="">
+        <input id="tokens" type="hidden" name="tokens">
+        <input id="userAgent" type="hidden" name="userAgent">
+        <div><button class="btn btn-info pull-right" id="button_submit" value="click here to see the guideline">Submit HIT</button><br></div>
+
+    <hr>
+
+    <footer>
+			<p>Copyright &copy; 2019 Ubiquitous Knowledge Processing Lab, Technische Universität Darmstadt</p>
+    </footer>
+
+</div><!--/.container-->
+
+</form>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../js/jquery-2.1.3.min.js"><\/script>')</script>
+<script src="../js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../js/mainclaim.js"></script>
+</body>
+</html>

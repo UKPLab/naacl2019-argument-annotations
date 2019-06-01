@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright 2019
+  ~ Ubiquitous Knowledge Processing (UKP) Lab
+  ~ Technische Universität Darmstadt
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Annotation summary</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/summary.css" rel="stylesheet">
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+	<div class="container-fluid">
+
+		<h1>Annotation summary</h1>
+		
+		<div id="legend">
+		<h3>Legend</h3>
+			<span class="intextannotation MajorClaim">Major Claim</span>
+			<span class="intextannotation Claim Support">Supporting Claim</span>
+			<span class="intextannotation Claim Attack">Attacking Claim</span>
+			<span class="intextannotation Premise Support">Supporting Premise</span>
+			<span class="intextannotation Premise Attack">Attacking Premise</span>
+		</div>
+
+		<table class="table table-striped sortable" id="sortable-table">
+			<thead>
+				<tr>
+					<th class="col-md-1">HIT</th>
+					<th class="col-md-1">Annotator</th>
+					<th class="col-md-1">Competence</th>
+					<th class="col-md-1">Status</th>
+					<th class="col-md-8">Annotation</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#.}}
+				<tr class="{{workerID}}">
+					<td class="hitid" title="{{hitID}}">{{hitID}}</td>
+					<td class="workerid {{workerID}}">{{workerID}}</td>
+					<td class="competence">{{formatCompetence}}</td>
+					<td class="assignmentstatus">{{assignmentStatus}}</td>
+					<td class="review">{{#intext}}
+							{{{text}}}
+						{{/intext}}
+						{{^intext}}
+							<span class="notintextannotation">{{text}}</span>
+						{{/intext}}
+					</td>
+				</tr>
+				{{/.}}
+			</tbody>
+		</table>
+
+		<footer>
+			<p>Copyright &copy; 2019 Ubiquitous Knowledge Processing Lab, Technische Universität Darmstadt</p>
+		</footer>
+	</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/summary_annotation.js"></script>
+  </body>
+</html>

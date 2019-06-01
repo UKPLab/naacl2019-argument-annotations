@@ -1,0 +1,139 @@
+/*
+* Copyright 2019
+* Ubiquitous Knowledge Processing (UKP) Lab
+* Technische Universität Darmstadt
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+td.review {
+	overflow-wrap: break-word;
+	word-break: break-all;
+}
+
+td.workerid {
+	overflow-wrap: break-word;
+	word-break: break-all;
+}
+
+td.competence {
+	text-align: right;
+}
+
+td.gold {
+	color: goldenrod;
+}
+
+.intextannotation {
+	font-weight: bold;
+	padding: 1px;
+}
+
+.MajorClaim {
+	background-color: #f2dede;
+}
+
+/*
+.ClaimBut:before, .PremiseAgainst:before {
+	content: "Ⓐ ";
+}
+
+.ClaimBecause:before, .PremiseFor:before {
+	content: "Ⓢ ";
+}
+*/
+
+.Claim {
+	background-color: #d9edf7;
+}
+
+.Premise {
+	background-color: #dff0d8;
+}
+
+/*
+.ClaimBecause, .PremiseFor {
+	text-decoration: underline double blue;
+}
+*/
+
+.Attack {
+	text-decoration: underline wavy black;
+}
+
+.notintextannotation {
+	color: #555;
+	font-weight: bold;
+}
+
+td.hitid {
+	overflow-wrap: break-word;
+	word-break: break-all;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #777;
+}
+.bs-callout-default h4 {
+    color: #777;
+}
+.bs-callout-primary {
+    border-left-color: #428bca;
+}
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}

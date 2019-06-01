@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2019
+  ~ Ubiquitous Knowledge Processing (UKP) Lab
+  ~ Technische Universität Darmstadt
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+	<name>ProductReviewMetaData</name>
+	<description>Type system for Amazon product reviews</description>
+	<version>0.1</version>
+	<vendor>Redacted for anonymous submission</vendor>
+	<types>
+		<typeDescription>
+			<name>de.tudarmstadt.ukp.naacl2019.argannotation.types.ProductReviewMetaData</name>
+			<description>Meta data for Amazon product reviews</description>
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>productName</name>
+					<description>Product name</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>productID</name>
+					<description>Product ID</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>reviewerID</name>
+					<description>ID of the reviewer</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>starRating</name>
+					<description>Rating (0-5) with 0.5 graduation</description>
+					<rangeTypeName>uima.cas.Double</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>helpfulness</name>
+					<description>Information whether the review was helpful</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>timestamp</name>
+					<description>Timestamp of the review</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+	<typeDescription>
+      <name>de.tudarmstadt.ukp.naacl2019.argannotation.types.ReviewTitle</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+  <typeDescription>
+      <name>de.tudarmstadt.ukp.naacl2019.argannotation.types.ReviewBody</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+  </types>
+</typeSystemDescription>

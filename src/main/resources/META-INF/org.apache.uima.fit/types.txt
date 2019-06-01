@@ -1,0 +1,2 @@
+classpath*:desc/types/ProductReviewTypeSystem.xml
+classpath*:desc/types/GoldEstimation.xml
