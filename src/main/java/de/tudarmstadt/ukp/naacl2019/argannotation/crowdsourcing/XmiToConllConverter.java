@@ -65,7 +65,7 @@ public class XmiToConllConverter{
 	@Option(name="-i",aliases = { "--input" },metaVar="dir",usage="input folder", required=true)
 	private File inputDir;
 
-	@Option(name="-l",aliases = { "--level" },metaVar="str",usage="annotation level", required=true)
+	@Option(name="-l",aliases = { "--level" },metaVar="str",usage="annotation level (\"MajorClaim\", \"Claim\", or \"Premise\")", required=true)
 	private String annotationLevel;
 
     public static final String PARAM_SOURCE_LOCATION = ComponentParameters.PARAM_SOURCE_LOCATION;
