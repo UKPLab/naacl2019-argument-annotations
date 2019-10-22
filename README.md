@@ -88,7 +88,8 @@ If XMI files are not suitable for your workflow, you can convert them
 to another format.  A sample class for converting the XMI files to a
 tab-delimited format (similar to that used for
 [CONLL](http://ufal.mff.cuni.cz/conll2009-st/task-description.html))
-can be invoked as follows:
+is available.  After building the software (see below) it can be
+invoked as follows:
 
 ```
 mvn exec:java -Dexec.mainClass="de.tudarmstadt.ukp.naacl2019.argannotation.crowdsourcing.XmiToConllConverter" -Dexec.args="arg0 arg1 ..."
