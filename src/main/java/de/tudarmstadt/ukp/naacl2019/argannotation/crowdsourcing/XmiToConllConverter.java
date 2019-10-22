@@ -37,7 +37,6 @@ import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import de.tudarmstadt.ukp.naacl2019.argannotation.types.ReviewBody;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
@@ -52,6 +51,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.api.parameter.ComponentParameters;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
+import de.tudarmstadt.ukp.naacl2019.argannotation.types.ReviewBody;
 
 /**
  * Gets the xmi input and writes the conll data
@@ -94,7 +94,8 @@ public class XmiToConllConverter{
             createConll(jcas, outputDir);
         	}catch(IOException e){
         		faultyFiles.add(file);
-        		System.out.println("Error in file: " + file);
+                System.out.println("Error in file: " + file + ":");
+        		System.out.println(e);
         	}
 
         }
@@ -104,7 +105,7 @@ public class XmiToConllConverter{
         }
     }
 
-    public void createConll(JCas aJCas, File outputDir)    {
+    public void createConll(JCas aJCas, File outputDir) throws IOException    {
         // Get Metadata:
         String documentID = "";
         // DocumentMetaData metaData =(DocumentMetaData) JCasUtil.select(aJCas,
@@ -376,8 +377,7 @@ public class XmiToConllConverter{
 				writer.write(System.getProperty("line.separator"));
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw e;
 			}
 		}
     }
