@@ -99,9 +99,11 @@ public class XmiToConllConverter{
         	}
 
         }
-        System.out.println("Please check this files again:");
-        for (File file : faultyFiles){
-        	System.out.println(file);
+        if (faultyFiles.size() > 0) {
+            System.out.println("The following files had errors:");
+            for (File file : faultyFiles) {
+                System.out.println(file);
+            }
         }
     }
 
