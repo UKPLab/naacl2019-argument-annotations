@@ -61,6 +61,8 @@ the
 which is a superset of the original argumentation scheme described by
 Stab and Gurevych (2014).
 
+### Required step: Restore the original review texts
+
 The XMI files cross-reference the original texts from McAuley.
 Because the original review texts are not available under a free
 licence, we do not include them in our distribution, but we provide a
@@ -79,6 +81,23 @@ python3 src/main/python/add_review_texts.py --input data/xmi_stripped --output d
 Depending on the speed of your system, expect the process to take
 about an hour.  The reconstituted data will be placed in the
 `data/xmi` folder.
+
+### Optional step: Convert the data to another format
+
+If XMI files are not suitable for your workflow, you can convert them
+to another format.  A sample class for converting the XMI files to a
+tab-delimited format (similar to that used for
+[CONLL](http://ufal.mff.cuni.cz/conll2009-st/task-description.html))
+can be invoked as follows:
+
+```
+mvn exec:java -Dexec.mainClass="de.tudarmstadt.ukp.naacl2019.argannotation.crowdsourcing.XmiToConllConverter" -Dexec.args="arg0 arg1 ..."
+```
+
+Note that this converter is just a demonstration; it is lossy in that
+it does not indicate the ID of the major claim that is supported or
+attacked by a given claim, nor the ID of the claim that is supported
+or attacked by a given premise.
 
 
 ## Building and deploying the software
